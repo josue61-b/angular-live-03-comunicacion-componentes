@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { Estudiante } from '../../../models';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { BsColor, Estudiante } from '../../../models';
 
 @Component({
   selector: 'app-student-list',
@@ -14,4 +14,10 @@ export class StudentListComponent {
    */
   @Input()
   data: Estudiante[] = [];
+
+  @Input()
+  color: BsColor = 'light';
+
+  @Output()
+  delete = new EventEmitter();
 }

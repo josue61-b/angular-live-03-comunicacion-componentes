@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Estudiante } from '../../models';
 import { StudentListComponent } from '../../shared/components/student-list/student-list.component';
+import { StudentFormComponent } from '../../shared/components/student-form/student-form.component';
 
 @Component({
   selector: 'app-students-page',
-  imports: [StudentListComponent],
+  imports: [StudentListComponent, StudentFormComponent],
   templateUrl: './students-page.component.html',
   styleUrl: './students-page.component.scss',
 })
@@ -57,4 +58,27 @@ export class StudentsPageComponent {
       nombre: 'Valentina',
     },
   ];
+
+  onDeleteAprobado(id: number): void {
+    console.log('Recibimos el evento "delete" de Aprobado. ID: ', id);
+
+    this.estudiantesAprobados = this.estudiantesAprobados.filter(
+      (estudiante) => estudiante.id !== id
+    );
+  }
+
+  onDeleteDesaprobado(id: number): void {
+    console.log('Recibimos el evento "delete" de Desaprobado. ID: ', id);
+
+    this.estudiantesDesaprobados = this.estudiantesDesaprobados.filter(
+      (estudiante) => estudiante.id !== id
+    );
+  }
+
+  onDeleteAusente(id: number): void {
+    console.log('Recibimos el evento "delete" de Ausente. ID: ', id);
+    this.estudiantesAusentes = this.estudiantesAusentes.filter(
+      (estudiante) => estudiante.id !== id
+    );
+  }
 }

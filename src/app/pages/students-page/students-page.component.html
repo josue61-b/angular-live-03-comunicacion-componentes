@@ -2,12 +2,26 @@
   <h1>Students App</h1>
   <hr />
 
+  <app-student-form />
+
   <h4 class="my-4">Estudiantes aprobados</h4>
-  <app-student-list [data]="estudiantesAprobados" />
+  <app-student-list
+    (delete)="onDeleteAprobado($event)"
+    [data]="estudiantesAprobados"
+    [color]="'success'"
+  />
 
   <h4 class="my-4">Estudiantes desaprobados</h4>
-  <app-student-list [data]="estudiantesDesaprobados" />
+  <app-student-list
+    (delete)="onDeleteDesaprobado($event)"
+    [data]="estudiantesDesaprobados"
+    [color]="'danger'"
+  />
 
   <h4 class="my-4">Estudiantes ausentes</h4>
-  <app-student-list [data]="estudiantesAusentes" />
+  <app-student-list
+    (delete)="onDeleteAusente($event)"
+    [data]="estudiantesAusentes"
+    [color]="'info'"
+  />
 </main>

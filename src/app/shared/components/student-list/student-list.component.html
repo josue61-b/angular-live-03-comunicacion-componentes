@@ -1,8 +1,23 @@
 <ul class="list-group">
-  <li *ngFor="let student of data" class="list-group-item">
+  <li
+    [ngClass]="'list-group-item-' + color"
+    *ngIf="!data.length"
+    class="list-group-item"
+  >
+    No hay datos para mostrar...
+  </li>
+
+  <li
+    [ngClass]="'list-group-item-' + color"
+    *ngFor="let student of data"
+    class="list-group-item"
+  >
     <div class="d-flex justify-content-between align-items-center h-100">
       <p>{{ student.nombre }} {{ student.apellido }}</p>
-      <button class="btn btn-danger">X</button>
+
+      <button (click)="delete.emit(student.id)" class="btn btn-danger">
+        X
+      </button>
     </div>
   </li>
 </ul>
